@@ -55,7 +55,7 @@ public class ShoppingListServlet extends HttpServlet {
         String action = request.getParameter("action");
         
         HttpSession session = request.getSession();
-//        String sessionUsername = (String) session.getAttribute("username");
+
         ArrayList<String> items = (ArrayList<String>) session.getAttribute("items");
         
         String item = (String) request.getParameter("item");
@@ -64,14 +64,8 @@ public class ShoppingListServlet extends HttpServlet {
             items = new ArrayList<String>();
         }
         
-        
-        
         switch(action) {
-            case "logout":
-                session.removeAttribute("username");
-                session.removeAttribute("items");
-                getServletContext().getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
-            break;
+
             case "add":
                 items.add(item);
                 session.setAttribute("items", items);
